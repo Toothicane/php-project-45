@@ -3,8 +3,15 @@
     "description": "brain games project",
     "type": "project",
     "license": "MIT",
-    "require": {},
+    "require": {
+        "wp-cli/php-cli-tools": "^0.13.0"
+    },
     "bin": [
 	"bin/brain-games"
-    ]
+    ],
+    "autoload": {
+	"files": [
+	    "src/Cli.php"
+	]
+    }
 }
