@@ -27,7 +27,7 @@ function playEven() : void
     line("Answer \"yes\" if the number is even, otherwise answer \"no\"");
 
     for($i = 0; $i < $roundsCount; $i++) {
-        $questionNum = rand($minInt, $maxInt);
+        $questionNum = random_int($minInt, $maxInt);
         $correctAnswer = isEven($questionNum) ? "yes" : "no";
 
         line("Question: %d", $questionNum);
