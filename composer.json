@@ -7,14 +7,17 @@
         "wp-cli/php-cli-tools": "^0.13.0"
     },
     "bin": [
-	"bin/brain-games",
-	"bin/brain-even"
+        "bin/brain-games",
+        "bin/brain-even",
+        "bin/brain-calc"
     ],
     "autoload": {
-	"files": [
-	    "src/Cli.php",
-	    "src/EvenGame.php"
-	]
+        "files": [
+            "src/Cli.php",
+            "src/Engine.php",
+            "src/Games/EvenGame.php",
+            "src/Games/CalcGame.php"
+        ]
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "*"
