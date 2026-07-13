@@ -29,13 +29,14 @@ https://asciinema.org/a/XE3VxpTAC0l2SYZF
 After you clone the repository, run `make install` or `composer install` in the root directory. You will need **PHP 8.3** or higher and **composer** installed on your machine.
 
 ## Usage
-The following command are run from the root directory.
-To *show the greeting* run `make brain-games` or `./bin/brain-games`.
-To *play even numbers game* run `make brain-even` or `./bin/brain-even`.
-To *play calculator game* run `make brain-calc` or `./bin/brain-calc`.
-To *play greatest common divisor game* run `make brain-gcd` or `./bin/brain-gcd`.
-To *play progression game* run `make brain-progression` or `./bin/brain-progression`.
-To *play prime numbers game* run `make brain-prime` or `./bin/brain-prime`.
+The following commands are run from the root directory.
+
+To *show the greeting* run `make brain-games` or `./bin/brain-games`.  
+To play *even numbers game* run `make brain-even` or `./bin/brain-even`.  
+To play *calculator game* run `make brain-calc` or `./bin/brain-calc`.  
+To play *greatest common divisor game* run `make brain-gcd` or `./bin/brain-gcd`.  
+To play *progression game* run `make brain-progression` or `./bin/brain-progression`.  
+To play *prime numbers game* run `make brain-prime` or `./bin/brain-prime`.
 
 ## Check results
 
