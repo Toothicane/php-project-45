@@ -16,6 +16,8 @@ use function BrainGames\Games\GcdGame\generateGcdArgs;
 
 use function BrainGames\Games\ProgressionGame\generateProgArgs;
 
+use function BrainGames\Games\PrimeGame\generatePrimeArgs;
+
 const ROUNDS_COUNT = 3;
 
 const GAME_CONFIG = [
@@ -38,6 +40,11 @@ const GAME_CONFIG = [
         'rules' => 'What number is missing in the progression?',
         'min' => 0, 
         'max' => 100
+    ],
+    'prime' => [
+        'rules' => 'Answer "yes" if given number is prime. Otherwise answer "no"',
+        'min' => 1, 
+        'max' => 200
     ]
 ];
 
@@ -81,6 +88,14 @@ function runGame(string $gameName) : void
                 }
                 $question = $progArgs['question'];
                 $correctAnswer = (string) $progArgs['answer'];
+                break;
+            case 'prime':
+                $primeArgs = generatePrimeArgs($config['min'], $config['max']);
+                if(empty($primeArgs)) {
+                    return;
+                }
+                $question = $primeArgs['question'];
+                $correctAnswer = (string) $primeArgs['answer'];
                 break;
             default:
                 return;    
