@@ -30,7 +30,7 @@ const GAME_CONFIG = [
         'min' => 0,
         'max' => 100],
     'prime' => [
-        'rules' => 'Answer "yes" if given number is prime. Otherwise answer "no"',
+        'rules' => 'Answer "yes" if given number is prime. Otherwise answer "no".',
         'function' => 'BrainGames\Games\PrimeGame\generatePrimeArgs',
         'min' => 1,
         'max' => 200]
@@ -61,7 +61,7 @@ function runGame(string $gameName): void
         if ($answer === $correctAnswer) {
             line("Correct!\n");
         } else {
-            line("'%s' is a wrong anwser! The correct answer was '%s'", $answer, $correctAnswer);
+            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $correctAnswer);
             line("Let's try again, %s!", $userName);
             return;
         }
