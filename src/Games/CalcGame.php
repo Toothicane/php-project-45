@@ -12,23 +12,24 @@ function generateCalcArgs(int $minNum, int $maxNum): array
 
     $operationNum = random_int(MIN_OPERATION_NUM, MAX_OPERATION_NUM);
 
+    $result = [];
+
     switch ($operationNum) {
         case 1:
-            return [
-                'question' => "{$firstNum} + {$secondNum}",
-                'answer' => $firstNum + $secondNum
-            ];
+            $result['question'] = "{$firstNum} + {$secondNum}";
+            $result['answer'] = $firstNum + $secondNum;
+            break;
         case 2:
-            return [
-                'question' => "{$firstNum} - {$secondNum}",
-                'answer' => $firstNum - $secondNum
-            ];
+            $result['question'] = "{$firstNum} - {$secondNum}";
+            $result['answer'] = $firstNum - $secondNum;
+            break;
         case 3:
-            return [
-                'question' => "{$firstNum} * {$secondNum}",
-                'answer' => $firstNum * $secondNum
-            ];
+            $result['question'] = "{$firstNum} * {$secondNum}";
+            $result['answer'] = $firstNum * $secondNum;
+            break;
         default:
             return [];
     }
+
+    return $result;
 }

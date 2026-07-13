@@ -10,7 +10,7 @@ const ROUNDS_COUNT = 3;
 
 const GAME_CONFIG = [
     'even' => [
-        'rules' => 'Answer "yes" if the number is even, otherwise answer "no"',
+        'rules' => 'Answer "yes" if the number is even, otherwise answer "no".',
         'function' => 'BrainGames\Games\EvenGame\generateEvenArgs',
         'min' => 0,
         'max' => 1000],

@@ -4,11 +4,7 @@ namespace BrainGames\Games\EvenGame;
 
 function isEven(int $num): bool
 {
-    if ($num % 2 === 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return ($num % 2 === 0) ? true : false;
 }
 
 function generateEvenArgs(int $minNum, int $maxNum): array
