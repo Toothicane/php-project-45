@@ -4,11 +4,11 @@ namespace BrainGames\Games\GcdGame;
 
 function findGcd(int $a, int $b)
 {
-    if(($a < 0) || ($b < 0)) {
+    if (($a < 0) || ($b < 0)) {
         return false;
     }
 
-    while($b !== 0) {
+    while ($b !== 0) {
         $temp = $a;
         $a = $b;
         $b = $temp % $b;
@@ -17,13 +17,13 @@ function findGcd(int $a, int $b)
     return $a;
 }
 
-function generateGcdArgs(int $minNum, int $maxNum) : array
+function generateGcdArgs(int $minNum, int $maxNum): array
 {
     $firstNum = random_int($minNum, $maxNum);
     $secondNum = random_int($minNum, $maxNum);
 
     $gcd = findGcd($firstNum, $secondNum);
-    if($gcd === false) {
+    if ($gcd === false) {
         return [];
     }
 

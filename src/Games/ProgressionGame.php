@@ -5,9 +5,9 @@ namespace BrainGames\Games\ProgressionGame;
 const PROGRESSION_LENGTH = 10;
 const MAX_STEP = 10;
 
-function generateSequence(int $minFirst, int $maxFirst) : array
+function generateSequence(int $minFirst, int $maxFirst): array
 {
-    if($maxFirst < $minFirst) {
+    if ($maxFirst < $minFirst) {
         return [];
     }
 
@@ -15,18 +15,18 @@ function generateSequence(int $minFirst, int $maxFirst) : array
     $start = random_int($minFirst, $maxFirst);
 
     $result = [];
-    for($i = 0; $i < PROGRESSION_LENGTH; $i++) {
+    for ($i = 0; $i < PROGRESSION_LENGTH; $i++) {
         $result[] = $start + $i * $step;
     }
 
     return $result;
 }
 
-function generateProgArgs(int $minFirst, int $maxFirst) : array
+function generateProgArgs(int $minFirst, int $maxFirst): array
 {
     $progression = generateSequence($minFirst, $maxFirst);
-    
-    if(empty($progression)) {
+
+    if (empty($progression)) {
         return [];
     }
 

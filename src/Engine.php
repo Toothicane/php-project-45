@@ -4,110 +4,65 @@ namespace BrainGames\Engine;
 
 use function cli\line;
 use function cli\prompt;
-
 use function BrainGames\Cli\greet;
-
-use function BrainGames\Games\EvenGame\generateEvenQuestion;
-use function BrainGames\Games\EvenGame\getEvenAnswer;
-
-use function BrainGames\Games\CalcGame\generateCalc;
-
-use function BrainGames\Games\GcdGame\generateGcdArgs;
-
-use function BrainGames\Games\ProgressionGame\generateProgArgs;
-
-use function BrainGames\Games\PrimeGame\generatePrimeArgs;
 
 const ROUNDS_COUNT = 3;
 
 const GAME_CONFIG = [
     'even' => [
         'rules' => 'Answer "yes" if the number is even, otherwise answer "no"',
-        'min' => 0, 
-        'max' => 1000
-    ],
+        'function' => 'BrainGames\Games\EvenGame\generateEvenArgs',
+        'min' => 0,
+        'max' => 1000],
     'calc' => [
         'rules' => 'What is the result of the expression?',
-        'min' => 0, 
-        'max' => 100
-    ],
+        'function' => 'BrainGames\Games\CalcGame\generateCalcArgs',
+        'min' => 0,
+        'max' => 100],
     'gcd' => [
         'rules' => 'Find the greatest common divisor of given numbers',
-        'min' => 0, 
-        'max' => 100
-    ],
+        'function' => 'BrainGames\Games\GcdGame\generateGcdArgs',
+        'min' => 0,
+        'max' => 100],
     'progression' => [
         'rules' => 'What number is missing in the progression?',
-        'min' => 0, 
-        'max' => 100
-    ],
+        'function' => 'BrainGames\Games\ProgressionGame\generateProgArgs',
+        'min' => 0,
+        'max' => 100],
     'prime' => [
         'rules' => 'Answer "yes" if given number is prime. Otherwise answer "no"',
-        'min' => 1, 
-        'max' => 200
-    ]
+        'function' => 'BrainGames\Games\PrimeGame\generatePrimeArgs',
+        'min' => 1,
+        'max' => 200]
 ];
 
-function runGame(string $gameName) : void
+function runGame(string $gameName): void
 {
     $config = GAME_CONFIG[$gameName];
 
     $userName = greet();
 
+    line("Welcome to the Brain Games!");
     line($config['rules']);
 
-    for($i = 0; $i < ROUNDS_COUNT; $i++) {
-        switch($gameName) {
-            case 'even':
-                $question = generateEvenQuestion($config['min'], $config['max']);
-                if($question === false) {
-                    return;
-                }
-                $correctAnswer = getEvenAnswer($question);
-                break;
-            case 'calc':
-                $calcArgs = generateCalc($config['min'], $config['max']);
-                if(empty($calcArgs)) {
-                    return;
-                }
-                $question = $calcArgs['question'];
-                $correctAnswer = (string) $calcArgs['answer'];
-                break;
-            case 'gcd':
-                $gcdArgs = generateGcdArgs($config['min'], $config['max']);
-                if(empty($gcdArgs)) {
-                    return;
-                }
-                $question = $gcdArgs['question'];
-                $correctAnswer = (string) $gcdArgs['answer'];
-                break;
-            case 'progression':
-                $progArgs = generateProgArgs($config['min'], $config['max']);
-                if(empty($progArgs)) {
-                    return;
-                }
-                $question = $progArgs['question'];
-                $correctAnswer = (string) $progArgs['answer'];
-                break;
-            case 'prime':
-                $primeArgs = generatePrimeArgs($config['min'], $config['max']);
-                if(empty($primeArgs)) {
-                    return;
-                }
-                $question = $primeArgs['question'];
-                $correctAnswer = (string) $primeArgs['answer'];
-                break;
-            default:
-                return;    
+    for ($i = 0; $i < ROUNDS_COUNT; $i++) {
+        $generator = $config['function'];
+        $args = $generator($config['min'], $config['max']);
+
+        if (empty($args)) {
+            return;
         }
+        $question = $args['question'];
+        $correctAnswer = (string) $args['answer'];
 
         line("Question: %s", $question);
         $answer = prompt("Your answer");
 
-        if($answer === $correctAnswer) {
+        if ($answer === $correctAnswer) {
             line("Correct!\n");
         } else {
-            line("'%s' is a wrong anwser! The correct answer was '%s'\nLet's try again, %s!", $answer, $correctAnswer, $userName);
+            line("'%s' is a wrong anwser! The correct answer was '%s'", $answer, $correctAnswer);
+            line("Let's try again, %s!", $userName);
             return;
         }
     }

@@ -2,24 +2,26 @@
 
 namespace BrainGames\Games\EvenGame;
 
-function isEven(int $num) : bool 
+function isEven(int $num): bool
 {
-    if($num % 2 === 0) {
+    if ($num % 2 === 0) {
         return true;
     } else {
         return false;
     }
 }
 
-function generateEvenQuestion(int $minNum, int $maxNum)
+function generateEvenArgs(int $minNum, int $maxNum): array
 {
-    if($maxNum < $minNum) {
-        return false;
+
+    if ($maxNum < $minNum) {
+        return [];
     }
 
-    return random_int($minNum, $maxNum);
-}
+    $numberToCheck = random_int($minNum, $maxNum);
 
-function getEvenAnswer(int $questionNum) {
-    return isEven($questionNum) ? "yes" : "no";
+    return [
+        'question' => $numberToCheck,
+        'answer' => isEven($numberToCheck) ? 'yes' : 'no'
+    ];
 }

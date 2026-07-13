@@ -5,7 +5,7 @@ namespace BrainGames\Games\CalcGame;
 const MIN_OPERATION_NUM = 1;
 const MAX_OPERATION_NUM = 3;
 
-function generateCalc(int $minNum, int $maxNum) : array
+function generateCalcArgs(int $minNum, int $maxNum): array
 {
     $firstNum = random_int($minNum, $maxNum);
     $secondNum = random_int($minNum, $maxNum);
@@ -17,17 +17,17 @@ function generateCalc(int $minNum, int $maxNum) : array
             return [
                 'question' => "{$firstNum} + {$secondNum}",
                 'answer' => $firstNum + $secondNum
-            ];    
+            ];
         case 2:
             return [
                 'question' => "{$firstNum} - {$secondNum}",
                 'answer' => $firstNum - $secondNum
-            ]; 
+            ];
         case 3:
             return [
                 'question' => "{$firstNum} * {$secondNum}",
                 'answer' => $firstNum * $secondNum
-            ]; 
+            ];
         default:
             return [];
     }
