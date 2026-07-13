@@ -12,6 +12,8 @@ use function BrainGames\Games\EvenGame\getEvenAnswer;
 
 use function BrainGames\Games\CalcGame\generateCalc;
 
+use function BrainGames\Games\GcdGame\generateGcdArgs;
+
 const ROUNDS_COUNT = 3;
 
 const GAME_CONFIG = [
@@ -22,6 +24,11 @@ const GAME_CONFIG = [
     ],
     'calc' => [
         'rules' => 'What is the result of the expression?',
+        'min' => 0, 
+        'max' => 100
+    ],
+    'gcd' => [
+        'rules' => 'Find the greatest common divisor of given numbers',
         'min' => 0, 
         'max' => 100
     ]
@@ -51,6 +58,14 @@ function runGame(string $gameName) : void
                 }
                 $question = $calcArgs['question'];
                 $correctAnswer = (string) $calcArgs['answer'];
+                break;
+            case 'gcd':
+                $gcdArgs = generateGcdArgs($config['min'], $config['max']);
+                if(empty($gcdArgs)) {
+                    return;
+                }
+                $question = $gcdArgs['question'];
+                $correctAnswer = (string) $gcdArgs['answer'];
                 break;
             default:
                 return;    

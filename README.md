@@ -30,3 +30,7 @@ https://asciinema.org/a/2VA2Ksx87Pd6GHCl
 ### Brain-calc game demo:
 
 https://asciinema.org/a/HppEsAGIgqNWWTre
+
+### Brain-gcd game demo:
+
+https://asciinema.org/a/Glb5swZRVuvMo4Kh
