@@ -14,6 +14,8 @@ use function BrainGames\Games\CalcGame\generateCalc;
 
 use function BrainGames\Games\GcdGame\generateGcdArgs;
 
+use function BrainGames\Games\ProgressionGame\generateProgArgs;
+
 const ROUNDS_COUNT = 3;
 
 const GAME_CONFIG = [
@@ -29,6 +31,11 @@ const GAME_CONFIG = [
     ],
     'gcd' => [
         'rules' => 'Find the greatest common divisor of given numbers',
+        'min' => 0, 
+        'max' => 100
+    ],
+    'progression' => [
+        'rules' => 'What number is missing in the progression?',
         'min' => 0, 
         'max' => 100
     ]
@@ -66,6 +73,14 @@ function runGame(string $gameName) : void
                 }
                 $question = $gcdArgs['question'];
                 $correctAnswer = (string) $gcdArgs['answer'];
+                break;
+            case 'progression':
+                $progArgs = generateProgArgs($config['min'], $config['max']);
+                if(empty($progArgs)) {
+                    return;
+                }
+                $question = $progArgs['question'];
+                $correctAnswer = (string) $progArgs['answer'];
                 break;
             default:
                 return;    
